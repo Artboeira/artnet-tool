@@ -21,7 +21,7 @@ so that all subsequent development starts from a consistent, architecture-compli
 - [x] Task 1: Initialize project from Tauri 2 starter template (AC: #1)
   - [x] Run: `npm create tauri-app@latest artnet-tool -- --template react-ts`
   - [x] Verify `npm run tauri dev` succeeds — ✅ Rust installed, app compiled and opened successfully
-  - [ ] Run `git init && git add . && git commit -m "chore: initial Tauri scaffold"` — ready to execute
+  - [x] `git init` in `/ARTNET-TOOL` (repo root covers artnet-tool/, _bmad/, _bmad-output/, docs/, .claude/)
 
 - [x] Task 2: Create full frontend directory structure (AC: #2)
   - [x] Create `src/features/cue-pad/` with placeholder `index.ts`
