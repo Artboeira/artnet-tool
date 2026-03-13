@@ -1,0 +1,23 @@
+{
+  "permissions": {
+    "allow": [
+      "WebSearch",
+      "Bash(npm --version)",
+      "Bash(rustc --version)",
+      "Bash(cargo --version)",
+      "Read(//c/Users/NODATA/.cargo/**)",
+      "Read(//c/Users/NODATA/**)",
+      "Bash(cmd.exe /c \"rustc --version && cargo --version\")",
+      "Bash(cmd.exe /c \"rustc --version\")",
+      "Bash(cmd.exe /c \"cargo --version\")",
+      "Bash(npm create:*)",
+      "Bash(npx create-tauri-app@latest artnet-tool --template react-ts --manager npm --yes)",
+      "Bash(npm install:*)",
+      "Bash(npx tailwindcss:*)",
+      "Bash(npx --yes tailwindcss init -p)",
+      "Bash(ls node_modules/.bin/tailwind*)",
+      "Bash(node_modules/.bin/tailwindcss init:*)",
+      "Bash(npx tsc:*)"
+    ]
+  }
+}

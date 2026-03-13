@@ -1,0 +1,4 @@
+# release.yml — Tauri cross-platform release build
+# Populated in Story 1.6 (CI/CD Pipeline)
+# Will use tauri-apps/tauri-action with matrix: [windows-latest, macos-latest, ubuntu-latest]
+# Triggered on: push to tags matching v*.*.*

@@ -1,0 +1,88 @@
+# generated: 2026-03-12
+# project: ARTNET-TOOL
+# project_key: NOKEY
+# tracking_system: file-system
+# story_location: _bmad-output/implementation-artifacts
+
+# STATUS DEFINITIONS:
+# ==================
+# Epic Status:
+#   - backlog: Epic not yet started
+#   - in-progress: Epic actively being worked on
+#   - done: All stories in epic completed
+#
+# Epic Status Transitions:
+#   - backlog → in-progress: Automatically when first story is created (via create-story)
+#   - in-progress → done: Manually when all stories reach 'done' status
+#
+# Story Status:
+#   - backlog: Story only exists in epic file
+#   - ready-for-dev: Story file created in stories folder
+#   - in-progress: Developer actively working on implementation
+#   - review: Ready for code review (via Dev's code-review workflow)
+#   - done: Story completed
+#
+# Retrospective Status:
+#   - optional: Can be completed but not required
+#   - done: Retrospective has been completed
+#
+# WORKFLOW NOTES:
+# ===============
+# - Epic transitions to 'in-progress' automatically when first story is created
+# - Stories can be worked in parallel if team capacity allows
+# - SM typically creates next story after previous one is 'done' to incorporate learnings
+# - Dev moves story to 'review', then runs code-review (fresh context, different LLM recommended)
+
+generated: 2026-03-12
+project: ARTNET-TOOL
+project_key: NOKEY
+tracking_system: file-system
+story_location: _bmad-output/implementation-artifacts
+
+development_status:
+  epic-1: in-progress
+  1-1-project-scaffold-and-directory-structure: done
+  1-2-ui-shell-dark-theme-shadcn-ui-and-3-tab-navigation: backlog
+  1-3-zustand-state-management-scaffold: backlog
+  1-4-rust-backend-structure-and-ipc-foundation: backlog
+  1-5-playback-engine-thread-isolation-scaffold: backlog
+  1-6-ci-cd-pipeline: backlog
+  epic-1-retrospective: optional
+
+  epic-2: backlog
+  2-1-network-interface-discovery-and-selection: backlog
+  2-2-passive-artnet-sacn-capture-engine-start-stop-and-record: backlog
+  2-3-real-time-dmx-monitor-universe-panels-and-channel-state-display: backlog
+  epic-2-retrospective: optional
+
+  epic-3: backlog
+  3-1-save-recording-as-named-scene-and-scene-library-management: backlog
+  3-2-frame-accurate-artnet-sacn-playback-engine: backlog
+  3-3-playback-modes-and-speed-configuration: backlog
+  3-4-cue-pad-ui-manual-scene-trigger-and-real-time-speed-control: backlog
+  3-5-playback-monitor-outgoing-dmx-signal-display: backlog
+  epic-3-retrospective: optional
+
+  epic-4: backlog
+  4-1-keyboard-shortcut-assignment-and-os-level-scene-trigger: backlog
+  4-2-midi-device-management-mapping-and-hot-plug-detection: backlog
+  4-3-time-based-scene-scheduling-and-auto-switch: backlog
+  epic-4-retrospective: optional
+
+  epic-5: backlog
+  5-1-project-create-save-load-and-startup-configuration: backlog
+  5-2-project-export-and-cross-platform-import: backlog
+  5-3-project-file-integrity-validation-and-forward-compatibility: backlog
+  epic-5-retrospective: optional
+
+  epic-6: backlog
+  6-1-os-auto-start-auto-load-auto-play-and-startup-error-handling: backlog
+  6-2-crash-recovery-auto-restart-and-playback-resumption: backlog
+  6-3-platform-installer-and-os-prerequisites: backlog
+  epic-6-retrospective: optional
+
+  epic-7: backlog
+  7-1-persistent-event-and-crash-logging: backlog
+  7-2-in-app-log-viewer: backlog
+  7-3-software-update-notifications: backlog
+  epic-7-retrospective: optional

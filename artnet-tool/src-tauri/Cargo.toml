@@ -1,0 +1,46 @@
+[package]
+name = "artnet-tool"
+version = "0.1.0"
+description = "Cross-platform ArtNet/sACN DMX recorder and playback tool"
+authors = ["NODATA"]
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[lib]
+# The `_lib` suffix may seem redundant but it is necessary
+# to make the lib name unique and wouldn't conflict with the bin name.
+# This seems to be only an issue on Windows, see https://github.com/rust-lang/cargo/issues/8519
+name = "artnet_tool_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+tauri = { version = "2", features = [] }
+tauri-plugin-opener = "2"
+tauri-plugin-global-shortcut = "2"
+
+# Async runtime (all subsystems except playback engine thread)
+tokio = { version = "1", features = ["full"] }
+
+# Serialization — project files, IPC payloads
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+
+# Error handling
+thiserror = "2"
+anyhow = "1"
+
+# Structured logging with rolling file appender (Story 7.1)
+tracing = "0.1"
+tracing-appender = "0.2"
+
+# High-precision sleep for playback engine ±1ms timing (Story 1.5 / Story 3.2)
+spin_sleep = "1"
+
+# NOTE: pcap and midir are NOT added here — they require system libraries
+# (libpcap/Npcap for pcap, ALSA for midir on Linux) and are added together
+# with their system dependency documentation in Stories 2.1 and 4.2 respectively.
+
