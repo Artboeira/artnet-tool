@@ -17,7 +17,10 @@
       "Bash(npx --yes tailwindcss init -p)",
       "Bash(ls node_modules/.bin/tailwind*)",
       "Bash(node_modules/.bin/tailwindcss init:*)",
-      "Bash(npx tsc:*)"
+      "Bash(npx tsc:*)",
+      "Bash(npx shadcn@latest add tabs --yes)",
+      "Bash(npx shadcn@latest add button --yes)",
+      "Bash(npm run:*)"
     ]
   }
 }
