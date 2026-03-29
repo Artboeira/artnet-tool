@@ -1,6 +1,6 @@
 # Story 1.2: UI Shell — Dark Theme, shadcn/ui & 3-Tab Navigation
 
-Status: review
+Status: done
 
 ## Story
 
@@ -258,12 +258,16 @@ claude-sonnet-4-6
 
 - `artnet-tool/src/components/ui/tabs.tsx` — created (shadcn generated)
 - `artnet-tool/src/components/ui/button.tsx` — created (shadcn generated)
-- `artnet-tool/src/components/layout/AppShell.tsx` — created
+- `artnet-tool/src/components/layout/AppShell.tsx` — created; updated in code review (mt-0, w-full, runtime TabId guard, bg-background on TabsList, aria-label)
+- `artnet-tool/src/components/layout/AppShell.test.tsx` — created (5 Vitest tests)
 - `artnet-tool/src/components/layout/.gitkeep` — deleted
 - `artnet-tool/src/App.tsx` — modified
-- `artnet-tool/package.json` — modified (added `@radix-ui/react-tabs`, `@radix-ui/react-slot`, `class-variance-authority`)
+- `artnet-tool/src/test/setup.ts` — created (jest-dom setup for Vitest)
+- `artnet-tool/vite.config.ts` — modified (Vitest test config added)
+- `artnet-tool/package.json` — modified (added `@radix-ui/react-tabs`, `@radix-ui/react-slot`, `class-variance-authority`; vitest, @testing-library/* in devDependencies)
 - `artnet-tool/package-lock.json` — modified
 
 ## Change Log
 
 - 2026-03-15: Implemented Story 1.2 — installed shadcn/ui Tabs and Button components, created AppShell.tsx with 3-tab navigation (Cue Pad / Monitor / Settings), wired into App.tsx. TypeScript and build checks pass. Pending: user visual validation via `npm run tauri dev`.
+- 2026-03-29: Code review fixes applied — AppShell.tsx: added `w-full`, `mt-0` on all TabsContent (removes unwanted `mt-2` from shadcn default), runtime TabId guard replacing unsafe `as` cast, `bg-background` on TabsList (removes `bg-muted` pill artifact), `aria-label="Main navigation"` on TabsList. Scaffolded Vitest test infrastructure (vitest + @testing-library/react, vite.config.ts updated, src/test/setup.ts). Created AppShell.test.tsx with 5 passing tests. Story status set to done.

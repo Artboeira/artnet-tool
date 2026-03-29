@@ -20,7 +20,8 @@
       "Bash(npx tsc:*)",
       "Bash(npx shadcn@latest add tabs --yes)",
       "Bash(npx shadcn@latest add button --yes)",
-      "Bash(npm run:*)"
+      "Bash(npm run:*)",
+      "Bash(npm test:*)"
     ]
   }
 }

@@ -42,7 +42,7 @@ story_location: _bmad-output/implementation-artifacts
 development_status:
   epic-1: in-progress
   1-1-project-scaffold-and-directory-structure: done
-  1-2-ui-shell-dark-theme-shadcn-ui-and-3-tab-navigation: review
+  1-2-ui-shell-dark-theme-shadcn-ui-and-3-tab-navigation: done
   1-3-zustand-state-management-scaffold: backlog
   1-4-rust-backend-structure-and-ipc-foundation: backlog
   1-5-playback-engine-thread-isolation-scaffold: backlog
