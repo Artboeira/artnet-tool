@@ -45,7 +45,7 @@ development_status:
   1-2-ui-shell-dark-theme-shadcn-ui-and-3-tab-navigation: done
   1-3-zustand-state-management-scaffold: done
   1-4-rust-backend-structure-and-ipc-foundation: done
-  1-5-playback-engine-thread-isolation-scaffold: review
+  1-5-playback-engine-thread-isolation-scaffold: done
   1-6-ci-cd-pipeline: backlog
   epic-1-retrospective: optional
 
