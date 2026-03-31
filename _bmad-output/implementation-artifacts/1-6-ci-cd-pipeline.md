@@ -1,6 +1,6 @@
 # Story 1.6: CI/CD Pipeline
 
-Status: ready-for-dev
+Status: review
 
 ## Story
 
@@ -18,42 +18,42 @@ so that releases are produced automatically without manual per-platform build st
 
 ## Tasks / Subtasks
 
-- [ ] Task 1: Create `.github/workflows/release.yml` at the repository root (AC: #1, #2, #3)
-  - [ ] Create directory `.github/workflows/` at the repo root (NOT inside `artnet-tool/`)
-  - [ ] Create `release.yml` with trigger `on: push: tags: ['v*']`
-  - [ ] Add `permissions: contents: write` at the top level (required for `GITHUB_TOKEN` to create releases)
-  - [ ] Add matrix strategy with `fail-fast: false` and three platform entries (see Dev Notes for exact YAML)
+- [x] Task 1: Create `.github/workflows/release.yml` at the repository root (AC: #1, #2, #3)
+  - [x] Create directory `.github/workflows/` at the repo root (NOT inside `artnet-tool/`)
+  - [x] Create `release.yml` with trigger `on: push: tags: ['v*']`
+  - [x] Add `permissions: contents: write` at the top level (required for `GITHUB_TOKEN` to create releases)
+  - [x] Add matrix strategy with `fail-fast: false` and three platform entries (see Dev Notes for exact YAML)
 
-- [ ] Task 2: Configure job steps — toolchain, caching, Node, Linux deps (AC: #1)
-  - [ ] Add `actions/checkout@v4` as first step
-  - [ ] Add `actions/setup-node@v4` with `node-version: lts/*`
-  - [ ] Add `dtolnay/rust-toolchain@stable` with `targets` set for macOS Universal only (see Dev Notes)
-  - [ ] Add `swatinem/rust-cache@v2` with `workspaces: './artnet-tool/src-tauri -> target'`
-  - [ ] Add Linux apt-get step gated with `if: matrix.platform == 'ubuntu-22.04'` (see exact package list in Dev Notes)
-  - [ ] Add `npm install` step with `working-directory: artnet-tool`
+- [x] Task 2: Configure job steps — toolchain, caching, Node, Linux deps (AC: #1)
+  - [x] Add `actions/checkout@v4` as first step
+  - [x] Add `actions/setup-node@v4` with `node-version: lts/*`
+  - [x] Add `dtolnay/rust-toolchain@stable` with `targets` set for macOS Universal only (see Dev Notes)
+  - [x] Add `swatinem/rust-cache@v2` with `workspaces: './artnet-tool/src-tauri -> target'`
+  - [x] Add Linux apt-get step gated with `if: matrix.platform == 'ubuntu-22.04'` (see exact package list in Dev Notes)
+  - [x] Add `npm install` step with `working-directory: artnet-tool`
 
-- [ ] Task 3: Add macOS signing stub (AC: #2)
-  - [ ] In the `tauri-apps/tauri-action` step, add commented-out macOS signing env vars
-  - [ ] Add a comment above the vars: `# macOS notarization: uncomment and configure when Apple Developer account is active`
-  - [ ] Signing vars to stub: `APPLE_CERTIFICATE`, `APPLE_CERTIFICATE_PASSWORD`, `APPLE_ID`, `APPLE_TEAM_ID`, `APPLE_PASSWORD`
+- [x] Task 3: Add macOS signing stub (AC: #2)
+  - [x] In the `tauri-apps/tauri-action` step, add commented-out macOS signing env vars
+  - [x] Add a comment above the vars: `# macOS notarization: uncomment and configure when Apple Developer account is active`
+  - [x] Signing vars to stub: `APPLE_CERTIFICATE`, `APPLE_CERTIFICATE_PASSWORD`, `APPLE_ID`, `APPLE_TEAM_ID`, `APPLE_PASSWORD`
 
-- [ ] Task 4: Configure `tauri-apps/tauri-action@v0` step (AC: #1, #3)
-  - [ ] Use `tauri-apps/tauri-action@v0` (the v0 tag supports Tauri 2.x)
-  - [ ] Set `env: GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}`
-  - [ ] Set `with.tagName: ${{ github.ref_name }}`
-  - [ ] Set `with.releaseName: 'ARTNET-TOOL ${{ github.ref_name }}'`
-  - [ ] Set `with.releaseDraft: true` (review before publishing — safer default)
-  - [ ] Set `with.prerelease: false`
-  - [ ] Set `with.args: ${{ matrix.args }}` (passes `--target universal-apple-darwin` for macOS)
-  - [ ] Set `with.projectPath: './artnet-tool'` (required — source root is not repo root)
+- [x] Task 4: Configure `tauri-apps/tauri-action@v0` step (AC: #1, #3)
+  - [x] Use `tauri-apps/tauri-action@v0` (the v0 tag supports Tauri 2.x)
+  - [x] Set `env: GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}`
+  - [x] Set `with.tagName: ${{ github.ref_name }}`
+  - [x] Set `with.releaseName: 'ARTNET-TOOL ${{ github.ref_name }}'`
+  - [x] Set `with.releaseDraft: true` (review before publishing — safer default)
+  - [x] Set `with.prerelease: false`
+  - [x] Set `with.args: ${{ matrix.args }}` (passes `--target universal-apple-darwin` for macOS)
+  - [x] Set `with.projectPath: './artnet-tool'` (required — source root is not repo root)
 
-- [ ] Task 5: Final validation (AC: all)
-  - [ ] Verify `.github/workflows/release.yml` exists at the repo root
-  - [ ] Verify YAML is syntactically valid (no tabs, correct indentation)
-  - [ ] Verify trigger is `on: push: tags: ['v*']` and NOT `on: push: branches`
-  - [ ] Verify matrix has exactly 3 entries: `macos-latest`, `ubuntu-22.04`, `windows-latest`
-  - [ ] Verify macOS signing env vars are present but commented out with explanation
-  - [ ] Run `cargo test` — confirm still 26/26 Rust tests pass (no Rust changes in this story)
+- [x] Task 5: Final validation (AC: all)
+  - [x] Verify `.github/workflows/release.yml` exists at the repo root
+  - [x] Verify YAML is syntactically valid (no tabs, correct indentation)
+  - [x] Verify trigger is `on: push: tags: ['v*']` and NOT `on: push: branches`
+  - [x] Verify matrix has exactly 3 entries: `macos-latest`, `ubuntu-22.04`, `windows-latest`
+  - [x] Verify macOS signing env vars are present but commented out with explanation
+  - [x] Run `cargo test` — confirm still 26/26 Rust tests pass (no Rust changes in this story)
 
 ## Dev Notes
 
@@ -239,6 +239,18 @@ claude-sonnet-4-6
 
 ### Debug Log References
 
+_No debug issues encountered._
+
 ### Completion Notes List
 
+- Created `.github/workflows/release.yml` at repo root — matrix build: `macos-latest` (Universal Binary `--target universal-apple-darwin`), `ubuntu-22.04`, `windows-latest`
+- Trigger: `on: push: tags: ['v*']`; `permissions: contents: write` for GITHUB_TOKEN release asset upload
+- Steps: `actions/checkout@v4`, `actions/setup-node@v4` (lts/*), `dtolnay/rust-toolchain@stable` (dual targets on macOS only), `swatinem/rust-cache@v2` (workspaces: `./artnet-tool/src-tauri -> target`), Linux apt-get deps (webkit2gtk-4.1), npm install
+- `tauri-apps/tauri-action@v0` configured with `projectPath: './artnet-tool'` (critical — Tauri project is not at repo root), `releaseDraft: true`, `args: ${{ matrix.args }}`
+- macOS notarization env vars stubbed and commented with clear note: "uncomment and configure when Apple Developer account is active"
+- `cargo test`: 26/26 Rust tests pass (no Rust changes — regression baseline confirmed)
+- YAML validated: no tabs, all required fields present, trigger and matrix verified
+
 ### File List
+
+- `.github/workflows/release.yml` — created (GitHub Actions release pipeline, 3-platform matrix)
