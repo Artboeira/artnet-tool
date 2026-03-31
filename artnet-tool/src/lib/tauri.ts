@@ -6,33 +6,55 @@
 // listen() → import from '@tauri-apps/api/event'
 // ============================================================
 import { invoke } from '@tauri-apps/api/core';
+import { useErrorStore } from '@/stores';
 
-// TODO: Add typed wrappers as commands are implemented in later stories.
+// ── Types ────────────────────────────────────────────────────────────────────
+
+export type AppVersion = string;
+
+// ── System commands ──────────────────────────────────────────────────────────
+
+/**
+ * Returns the application version string (e.g., "0.1.0").
+ * Demonstrates the full IPC pattern: typed wrapper, error surface, error store wiring.
+ * Implemented in: src-tauri/src/commands/system.rs
+ */
+export async function getAppVersion(): Promise<AppVersion> {
+  try {
+    return await invoke<AppVersion>('get_app_version');
+  } catch (err: unknown) {
+    // err is always a string — plain language from Rust .to_user_message()
+    useErrorStore.getState().setError(err as string);
+    throw err;
+  }
+}
+
+// ── Template: adding future commands ─────────────────────────────────────────
 //
 // Pattern for invoke wrappers:
-//   import { invoke } from '@tauri-apps/api/core';
 //   export async function commandName(param: ParamType): Promise<ReturnType> {
 //     try {
 //       return await invoke<ReturnType>('command_name', { param });
 //     } catch (err: unknown) {
-//       // err is always a string — plain language from Rust .to_user_message()
-//       // useErrorStore.getState().setError(err as string);
+//       useErrorStore.getState().setError(err as string);
 //       throw err;
 //     }
 //   }
 //
 // Pattern for event listeners:
 //   import { listen, type UnlistenFn } from '@tauri-apps/api/event'; // NOTE: 'event', not 'core'
-//   export function onPlaybackStateChanged(
-//     cb: (payload: PlaybackStateChangedPayload) => void
+//   export function onEventName(
+//     cb: (payload: EventPayload) => void
 //   ): Promise<UnlistenFn> {
-//     return listen<PlaybackStateChangedPayload>('playback-state-changed', (e) => cb(e.payload));
+//     return listen<EventPayload>('event-name', (e) => cb(e.payload));
 //   }
-
-// Placeholder export so this module is non-empty until real commands are added.
-// Remove once first real command wrapper is added.
-export const _IPC_BOUNDARY = true;
-
-// NOTE: invoke is imported above for use in future command wrappers.
-// Suppress unused-import lint warning until first wrapper is added.
-void invoke;
+//
+// Story-specific TODOs:
+//   Story 2.1: listInterfaces(), setInterface()  → commands/network.rs
+//   Story 2.2: startCapture(), stopCapture()     → commands/capture.rs
+//   Story 2.3: onMonitorUpdate()                 → listen 'monitor-update'
+//   Story 3.2: triggerScene(), stopPlayback()    → commands/playback.rs
+//   Story 4.1: registerShortcut()                → commands/keyboard.rs
+//   Story 4.2: getMidiDevices()                  → commands/midi.rs
+//   Story 5.x: loadProject(), saveProject()      → commands/project.rs
+//   Story 6.1: enableAutostart()                 → commands/system.rs

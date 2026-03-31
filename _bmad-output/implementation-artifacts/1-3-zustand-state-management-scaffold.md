@@ -1,6 +1,6 @@
 # Story 1.3: Zustand State Management Scaffold
 
-Status: review
+Status: done
 
 ## Story
 
@@ -344,19 +344,25 @@ _No debug issues encountered._
 - `npm test` — 7/7 tests pass (2 files): existing `AppShell.test.tsx` + new `errorStore.test.ts`
 - All architecture compliance rules satisfied (no `invoke()` in stores, no `I` prefix, correct naming)
 
+**Code Review Fixes (2026-03-30):**
+- M1 Fixed: `App.tsx` — replaced misleading `await` comment with correct async IIFE pattern; added `unlistenFns` array for proper cleanup accumulation
+- M2 Fixed: `monitorStore.ts` — added performance note documenting selector pattern (`useMonitorStore((s) => s.universes[id])`) for 30fps subscription paths
+- M3 Fixed: `monitorStore.ts` — changed `ChannelValues` from `Uint8Array` to `number[]` to match Tauri JSON IPC payload; added conversion note for components needing `Uint8Array` views
+
 ### File List
 
 - `artnet-tool/src/stores/playbackStore.ts` — created
 - `artnet-tool/src/stores/captureStore.ts` — created
 - `artnet-tool/src/stores/sceneStore.ts` — created
-- `artnet-tool/src/stores/monitorStore.ts` — created
+- `artnet-tool/src/stores/monitorStore.ts` — created (modified in code review: channels type + selector docs)
 - `artnet-tool/src/stores/settingsStore.ts` — created
 - `artnet-tool/src/stores/errorStore.ts` — created
 - `artnet-tool/src/stores/errorStore.test.ts` — created
 - `artnet-tool/src/stores/index.ts` — created
 - `artnet-tool/src/stores/.gitkeep` — deleted
-- `artnet-tool/src/App.tsx` — modified (added useEffect import + event listener skeleton)
+- `artnet-tool/src/App.tsx` — modified (useEffect async IIFE pattern + unlisten cleanup; updated in code review)
 
 ### Change Log
 
 - 2026-03-29: Story 1.3 implemented — all 6 Zustand store slices scaffolded, barrel index created, App.tsx event listener skeleton added, errorStore tests passing
+- 2026-03-30: Code review fixes — App.tsx async IIFE pattern corrected, monitorStore channels type changed to number[] for Tauri JSON compat, selector performance note added
