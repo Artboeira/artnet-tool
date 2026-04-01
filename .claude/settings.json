@@ -21,7 +21,11 @@
       "Bash(npx shadcn@latest add tabs --yes)",
       "Bash(npx shadcn@latest add button --yes)",
       "Bash(npm run:*)",
-      "Bash(npm test:*)"
+      "Bash(npm test:*)",
+      "Bash(cargo test:*)",
+      "Bash(cargo build:*)",
+      "Bash(python -c \"import yaml; yaml.safe_load\\(open\\(''.github/workflows/release.yml''\\)\\)\")",
+      "Bash(node -e \":*)"
     ]
   }
 }
